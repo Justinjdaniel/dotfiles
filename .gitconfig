@@ -1,0 +1,46 @@
+  
+[core]
+	editor = "code --wait"
+	excludesfile = ~/.gitignore_global
+
+[user]
+	email = 62233773+Justinjdaniel@users.noreply.github.com
+	name = Justin J Daniel
+
+[color]
+	ui = true
+
+[push]
+	default = upstream
+
+[pull]
+	rebase = true
+
+[rerere]
+	enabled = true
+
+[log]
+	decorate = short
+
+[alias]
+	br = branch
+	ci = commit --verbose
+	ms = "commit -m"
+	aa = add --all
+	co = checkout
+	df = diff
+	rb = rebase
+	pl = pull
+	psf = push --force-with-lease
+	ps = push
+	sh = stash
+	rl = reflog
+	rs = reset
+	st = status
+	fix = commit --amend --no-edit
+	new = checkout -b
+	l = log --oneline --decorate -10 --pretty=format:'%C(yellow)%h%C(reset)%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	tree = log --graph --oneline --all
+	undo = reset --mixed HEAD^
+	psn = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+	pr = !git diff $(git merge-base --fork-point master)
