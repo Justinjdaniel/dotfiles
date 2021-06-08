@@ -1,17 +1,17 @@
-# ✨ zsh-Terminal-customization
-Oh-my-zsh : Tewrminal customizations 
+# ✨ dotfiles
+Oh-my-zsh : Terminal customizations 
 
 ## Usage
 ### First Time Installation
 ````zsh
-git clone https://github.com/Justinjdaniel/zsh-Terminal-customization.git
-cd ./zsh-Terminal-customization
+git clone https://github.com/Justinjdaniel/dotfiles.git
+cd ./dotfiles
 ./install.sh
 ````
 
 ### Update Already Installed Files
 ````zsh
-cd ./zsh-Terminal-customization
+cd ./dotfiles
 ./install.sh -u
 ````
 
