@@ -15,9 +15,9 @@ function installDependencies() {
   # Enable Corepack and install pnpm
   corepack enable
   corepack prepare pnpm@latest --activate
-  
+
   installNerdFonts # Add this call
-  
+
   echo "👌 Dependencies (including optional font) processed."
 }
 
@@ -77,7 +77,7 @@ function doIt() {
   if [ "$1" != "-u" ]; then
       installDependencies;
   fi
-  
+
   configureZsh;
   configureGit;
   configureVim;
@@ -134,7 +134,7 @@ function installNerdFonts() {
 
   if [ ${#missing_commands[@]} -ne 0 ]; then
     echo "  ⚠️ Missing required commands: ${missing_commands[*]}. Skipping Nerd Font installation."
-    return 1
+    return 0
   fi
 
   # Check OS (rudimentary check for Linux-like systems)
@@ -142,7 +142,7 @@ function installNerdFonts() {
       echo "  ℹ️ Nerd Font installation script is primarily designed for Linux. Skipping on $(uname)."
       return 1 # Or simply return 0 if we don't want to treat non-Linux as an error for the whole script
   fi
-  
+
   local font_dir="$HOME/.local/share/fonts"
   echo "  Creating font directory if it doesn't exist: $font_dir"
   mkdir -p "$font_dir"
@@ -184,7 +184,7 @@ function installNerdFonts() {
     fi
     echo "  Removing downloaded zip file: $font_dir/$zip_file"
     rm -f "$font_dir/$zip_file"
-    
+
     echo "  Updating font cache (fc-cache -fv)..."
     fc-cache -fv
     echo "  ✔️ JetBrainsMono Nerd Font installed and cache updated successfully."
