@@ -68,7 +68,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker httpie node npm nvm z yarn colorize dotenv zsh-syntax-highlighting zsh-autosuggestions fzf)
+plugins=(git docker httpie node npm nvm z yarn pnpm colorize dotenv zsh-syntax-highlighting zsh-autosuggestions fzf)
+
+# NVM Initialization
+# The nvm plugin for Oh My Zsh might also handle this, but explicit initialization is safer.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,5 +103,34 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set default NODE_ENV for development
+export NODE_ENV=${NODE_ENV:-development}
+
+# Package Manager Aliases (pnpm primary)
+alias pi='pnpm install'
+alias pia='pnpm add'
+alias piad='pnpm add --save-dev'
+alias pig='pnpm add --global'
+alias pr='pnpm run'
+alias prs='pnpm run start'
+alias prt='pnpm run test'
+alias prb='pnpm run build'
+alias pt='pnpm test'
+alias ps='pnpm start'
+alias pd='pnpm run dev'
+
+# npm Aliases
+alias ni='npm install'
+alias nis='npm install --save'
+alias nisd='npm install --save-dev'
+alias nig='npm install --global'
+alias nr='npm run'
+alias nrs='npm run start'
+alias nrt='npm run test'
+alias nrb='npm run build'
+alias nt='npm test'
+alias ns='npm start'
+alias nd='npm run dev'
 
 alias bell="echo \"\a\""
