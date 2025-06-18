@@ -68,7 +68,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker httpie node npm nvm z yarn pnpm colorize dotenv zsh-syntax-highlighting zsh-autosuggestions fzf)
+plugins=(git docker httpie node npm nvm z yarn colorize dotenv zsh-syntax-highlighting zsh-autosuggestions)
 
 # NVM Initialization
 # The nvm plugin for Oh My Zsh might also handle this, but explicit initialization is safer.

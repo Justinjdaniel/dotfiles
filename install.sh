@@ -1,9 +1,15 @@
 #!/usr/bin/env zsh
 
 function installDependencies() {
-  echo "Installing Oh My Zsh..."
-  # Install Oh My Zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+  # Check if Oh My Zsh is already installed
+  if [ -d "${ZSH:-$HOME/.oh-my-zsh}" ]; then
+    echo "Oh My Zsh already installed. Skipping installation."
+  else
+    echo "Installing Oh My Zsh..."
+    # Install Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+  fi
 
   echo "Cloning Oh My Zsh plugins..."
   # Clone Oh My Zsh plugins
@@ -75,13 +81,13 @@ function doIt() {
   fi
 
   if [ "$1" != "-u" ]; then
-      installDependencies;
+    installDependencies || echo "⚠️ installDependencies failed, continuing..."
   fi
 
-  configureZsh;
-  configureGit;
-  configureVim;
-  configureVSCode;
+  configureZsh || echo "⚠️ configureZsh failed, continuing..."
+  configureGit || echo "⚠️ configureGit failed, continuing..."
+  configureVim || echo "⚠️ configureVim failed, continuing..."
+  configureVSCode || echo "⚠️ configureVSCode failed, continuing..."
   echo "✅ Done. Restart your terminal or source your ~/.zshrc file."
 }
 
